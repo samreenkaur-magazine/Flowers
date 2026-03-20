@@ -1,23 +1,39 @@
 const title = document.querySelector('.title')
-const text = `I Have Something for you Sami`.split('')
 
-// Create container for better responsive layout
+// Add \n where you want line break
+const text = `I Have Something for you\nSami`.split('\n')
+
 title.style.display = 'flex'
-title.style.flexWrap = 'wrap'
-title.style.justifyContent = 'center'
-title.style.Color='red'
-title.style.gap = '0.5rem'
+title.style.flexDirection = 'column'
+title.style.alignItems = 'center'
+title.style.color = 'red'
 
-for (let index = 0; index < text.length; index++) {
-  if (text[index] !== ' ') {
-    title.innerHTML += `<span>${text[index]}</span>`
-  } else {
-    title.innerHTML += `<span style='width: 1rem'></span>`
-  }
-}
+text.forEach(line => {
+  const lineDiv = document.createElement('div')
+  lineDiv.style.display = 'flex'
+  lineDiv.style.flexWrap = 'wrap'
+  lineDiv.style.justifyContent = 'center'
+  lineDiv.style.gap = '0.3rem'
 
-const textElements = document.querySelectorAll('.title span');
-textElements.forEach((element) => {
-  const randomDelay = Math.random() * 3;
-  element.style.animationDelay = `${randomDelay}s`;
-});
+  line.split(' ').forEach(word => {
+    const wordSpan = document.createElement('span')
+    wordSpan.style.display = 'flex'
+
+    word.split('').forEach(char => {
+      const span = document.createElement('span')
+      span.textContent = char
+      span.style.display = 'inline-block'
+      span.style.animationDelay = `${Math.random() * 3}s`
+      wordSpan.appendChild(span)
+    })
+
+    // space between words
+    const space = document.createElement('span')
+    space.style.width = '0.5rem'
+
+    lineDiv.appendChild(wordSpan)
+    lineDiv.appendChild(space)
+  })
+
+  title.appendChild(lineDiv)
+})
