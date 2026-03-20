@@ -10,7 +10,7 @@ title.style.justifyContent = 'center'
 title.style.gap = '0.5rem'
 title.style.color = 'white'       // dark pink (MediumVioletRed)
 title.style.padding = '0 1rem'      // add left/right padding
-title.style.fontSize = '2.5rem'     // adjust font size
+title.style.fontSize = '1.5rem'     // adjust font size
 title.style.textAlign = 'center'    // center text
 
 // Create letters
