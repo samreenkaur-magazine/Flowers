@@ -1,30 +1,39 @@
 const title = document.querySelector('.title')
 
-// Define text
-const text = `I Have Something for you Sami`.split('')
+// Add \n where you want line break
+const text = `I Have Something for you\nSami`.split('\n')
 
-// Style container
 title.style.display = 'flex'
-title.style.flexWrap = 'wrap'
-title.style.justifyContent = 'center'
-title.style.gap = '0.5rem'
-title.style.color = '#C71585'       // dark pink (MediumVioletRed)
-title.style.padding = '0 1rem'      // add left/right padding
-title.style.fontSize = '1.5rem'     // adjust font size
-title.style.textAlign = 'center'    // center text
+title.style.flexDirection = 'column'
+title.style.alignItems = 'center'
+title.style.color = 'red'
 
-// Create letters
-for (let i = 0; i < text.length; i++) {
-  if (text[i] !== ' ') {
-    title.innerHTML += `<span>${text[i]}</span>`
-  } else {
-    title.innerHTML += `<span style="width: 0.5rem"></span>`
-  }
-}
+text.forEach(line => {
+  const lineDiv = document.createElement('div')
+  lineDiv.style.display = 'flex'
+  lineDiv.style.flexWrap = 'wrap'
+  lineDiv.style.justifyContent = 'center'
+  lineDiv.style.gap = '0.3rem'
 
-// Apply random animation delay to letters
-const textElements = document.querySelectorAll('.title span')
-textElements.forEach(element => {
-  const randomDelay = Math.random() * 3
-  element.style.animationDelay = `${randomDelay}s`
+  line.split(' ').forEach(word => {
+    const wordSpan = document.createElement('span')
+    wordSpan.style.display = 'flex'
+
+    word.split('').forEach(char => {
+      const span = document.createElement('span')
+      span.textContent = char
+      span.style.display = 'inline-block'
+      span.style.animationDelay = `${Math.random() * 3}s`
+      wordSpan.appendChild(span)
+    })
+
+    // space between words
+    const space = document.createElement('span')
+    space.style.width = '0.5rem'
+
+    lineDiv.appendChild(wordSpan)
+    lineDiv.appendChild(space)
+  })
+
+  title.appendChild(lineDiv)
 })
