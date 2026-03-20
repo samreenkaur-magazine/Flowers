@@ -1,12 +1,12 @@
 const title = document.querySelector('.title')
 
 // Add \n where you want line break
-const text = `Have Something for you\nSami`.split('\n')
+const text = `I Have Something for you Sami`.split('\n')
 
 title.style.display = 'flex'
 title.style.flexDirection = 'column'
 title.style.alignItems = 'center'
-title.style.color = 'red'
+title.style.color = 'pink'
 
 text.forEach(line => {
   const lineDiv = document.createElement('div')
