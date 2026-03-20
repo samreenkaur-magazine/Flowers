@@ -1,19 +1,28 @@
-const title = document.querySelector('.title')
+const title = document.querySelector('.title');
 
-// Add \n where you want line break
-const text = `I Have Something for you Sami`.split('\n')
+// Content setup
+const textContent = `I Have Something for you Sami`;
+// Splits by newline if you add \n later, otherwise keeps it as one line
+const lines = textContent.split('\n'); 
 
-title.style.display = 'flex'
-title.style.flexDirection = 'column'
-title.style.alignItems = 'center'
-title.style.color = 'pink'
+// Layout & Alignment
+title.style.display = 'flex';
+title.style.flexDirection = 'column';
+title.style.alignItems = 'center';      // Horizontal centering
+title.style.textAlign = 'center';       // Center-aligns the text itself
 
-text.forEach(line => {
-  const lineDiv = document.createElement('div')
-  lineDiv.style.display = 'flex'
-  lineDiv.style.flexWrap = 'wrap'
-  lineDiv.style.justifyContent = 'center'
-  lineDiv.style.gap = '0.3rem'
+// Positioning & Spacing
+title.style.marginTop = '10vh';         // Moves it "a bit top" from center
+title.style.padding = '0 25px';         // Adds left/right breathing room
+
+// Styling
+title.style.color = '#C2185B';          // Beautiful dark pink (Deep Rose)
+title.style.fontSize = '2rem';          // Adjust as needed
+title.style.fontWeight = 'bold';
+
+// Render the text (preserves line breaks if any)
+title.innerHTML = lines.map(line => `<span>${line}</span>`).join('');
+
 
   line.split(' ').forEach(word => {
     const wordSpan = document.createElement('span')
