@@ -1,7 +1,7 @@
 const title = document.querySelector('.title')
 
 // Add \n where you want line break
-const text = `I Have Something for you\nSami`.split('\n')
+const text = `Have Something for you\nSami`.split('\n')
 
 title.style.display = 'flex'
 title.style.flexDirection = 'column'
